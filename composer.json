@@ -8,8 +8,5 @@
     "minimum-stability": "stable",
     "extra": {
         "installer-name": "dashboard"
-    },
-    "config": {
-        "preferred-install": "dist"
     }
 }
