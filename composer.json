@@ -1,0 +1,12 @@
+{
+    "name": "panix/theme-dashboard",
+    "description": "Backend theme",
+    "keywords": ["pixelion-cms"],
+    "homepage": "https://github.com/andrtechno/theme-dashboard",
+    "type": "pixelion-theme",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "extra": {
+        "installer-name": "dashboard"
+    }
+}
