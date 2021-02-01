@@ -12,6 +12,7 @@ use panix\mod\admin\models\Notification;
  */
 
 
+
 if (isset(Yii::$app->queue)) {
     $queueDoneCount = (new \yii\db\Query())->select(['done_at'])
         ->from(Yii::$app->queue->tableName)
@@ -20,15 +21,26 @@ if (isset(Yii::$app->queue)) {
         ->query()
         ->count();
 
+
+
+    $queueChannels = (new \yii\db\Query())->select(['channel'])
+        ->from(Yii::$app->queue->tableName)
+        ->where(['done_at' => null])
+        ->groupBy(['channel'])
+        ->createCommand()
+        ->queryAll(\PDO::FETCH_COLUMN);
+    $jQueueChannels = json_encode($queueChannels);
+
     if ($queueDoneCount) {
 
         $js = <<<JS
-var queue_notify =[];
+var queue_channels = $jQueueChannels;
+var queue_notify = [];
 
 queue();
 setInterval(function() {
     queue();
-}, 5000);
+}, 4000);
 
 function queue(){
 	$.ajax({
@@ -36,25 +48,51 @@ function queue(){
         type:'GET',
         dataType:'json',
         success:function(response){
-console.log(response);
-            if(response.length){
+            $.each(queue_channels,function(k,channel) {
+                //console.log(queue_notify[channel]);
+                var data = response[channel];
+                if(!queue_notify[channel] && data) { //if(!queue_notify.hasOwnProperty(channel)) {
+                    console.log('1');
+                    queue_notify[channel] = $.notify({message: 'Loading...'},{
+                        type: 'warning',
+                        allow_dismiss: false,
+                        showProgressbar:true,
+                        timer:0,
+                        //delay:5000,
+                        placement: {from: 'bottom', align: 'left'},
+                        template: '<div data-notify=\"container\" class=\"alert alert-{0}\" role=\"alert\"><button type=\"button\" aria-hidden=\"true\" class=\"close\" data-notify=\"dismiss\">&times;</button><span data-notify=\"icon\"></span> <span data-notify=\"title\">{1}</span> <span data-notify=\"message\">{2}</span><div class=\"progress\" data-notify=\"progressbar\"><div class=\"progress-bar bg-{0}\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%;\"></div></div><a href=\"{3}\" target=\"{4}\" data-notify=\"url\"></a></div>'
+                    });
+                    
+                } else if(data && queue_notify[channel]){
+                        console.log('5',queue_notify[channel]);
+                        queue_notify[channel].update({title:data.title,message: data.message}); //,progress: data.percent
+                }else{
+                    if(data){
+                         console.log('3');
+                        queue_notify[channel].update({title:data.title,message: data.message}); //,progress: data.percent
+                    }else{
+                        console.log('4');
+                        if(queue_notify[channel]){
+                        queue_notify[channel].update({message: 'Готово',type: 'success',progress: 99.9});
+                        setInterval(function() {
+                            queue_notify[channel].close();
+                          //  delete queue_notify[channel];
+                        }, 3000);
+                        }
+                        //queue_notify.splice(channel, 1);
+                    }
+                }
+    
+                        //if(!response[channel].total){
+                        //    queue_notify[channel].update({title:response[channel].title,message: 'Готово',type: 'success'});
+                        //}      
+            });
+
+            /*if(response.length){
 
                 $.each(response,function(key,data) {
 
-                    if(!queue_notify.hasOwnProperty(key)) {
-                        queue_notify[key] = $.notify({message: 'Loading...'},{
-                            type: 'warning',
-                            allow_dismiss: false,
-                            showProgressbar:true,
-                            timer:0,
-                            placement: {from: 'bottom', align: 'left'},
-                            
-                            
-                           // template:'<div class=\"toast\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\"><div class=\"toast-header\"><strong class=\"mr-auto\">Bootstrap</strong><small class=\"text-muted\">just now</small><button type=\"button\" class=\"ml-2 mb-1 close\" data-dismiss=\"toast\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div><div class=\"toast-body\">See? Just like this.</div></div>'
-                            
-                            template: '<div data-notify=\"container\" class=\"alert alert-{0}\" role=\"alert\"><button type=\"button\" aria-hidden=\"true\" class=\"close\" data-notify=\"dismiss\">&times;</button><span data-notify=\"icon\"></span> <span data-notify=\"title\">{1}</span> <span data-notify=\"message\">{2}</span><div class=\"progress\" data-notify=\"progressbar\"><div class=\"progress-bar bg-{0}\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%;\"></div></div><a href=\"{3}\" target=\"{4}\" data-notify=\"url\"></a></div>'
-                        });
-                    }
+
 
                     queue_notify[key].update({title:data.title,message: data.message, progress: data.percent});
                     if(!data.total){
@@ -78,7 +116,7 @@ console.log(response);
            
                 });
 
-            }
+            }*/
         }
 	});
 }
