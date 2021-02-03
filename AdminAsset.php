@@ -13,21 +13,31 @@ class AdminAsset extends AssetBundle
 
     public $css = [
         '//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic',
-        'css/dashboard.css',
-        'css/breadcrumbs.css',
-        'css/dark.css',
+        'css/style.css',
+        //'css/breadcrumbs.css',
+        //'css/dark.css',
     ];
 
     public $js = [
-        'js/jquery.cookie.js',
-        'js/dashboard.js',
+        'js/app.js',
+        'js/app.init.js',
+        //'js/app.init.dark.js',
+        'js/app-style-switcher.js',
+        'js/waves.js',
+        'js/sidebarmenu.js',
+        'js/custom.js',
+        //'js/pages/dashboards/dashboard1.js',
     ];
+
+
+
+
 
     public $depends = [
         'panix\ext\fancybox\FancyboxAsset',
         'panix\engine\assets\CommonAsset',
-        'panix\engine\assets\ClipboardAsset',
-        'app\web\themes\dashboard\AdminCountersAsset',
+        //'panix\engine\assets\ClipboardAsset',
+        //'app\web\themes\dashboard\AdminCountersAsset',
     ];
 
     public $cssOptions = ['data-theme' => 1];
