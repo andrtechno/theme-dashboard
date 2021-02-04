@@ -7,7 +7,7 @@
         <div class="navbar-header" data-logobg="skin5">
             <!-- This is for the sidebar toggle which is visible on mobile only -->
             <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-                <i class="ti-menu ti-close"></i>
+                <i class="icon-delete icon-menu "></i>
             </a>
             <!-- ============================================================== -->
             <!-- Logo -->
@@ -43,7 +43,7 @@
             <!-- ============================================================== -->
             <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent"
                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="ti-more"></i>
+                <i class="icon-menu"></i>
             </a>
         </div>
         <!-- ============================================================== -->
@@ -73,8 +73,8 @@
                     </a>
                     <form class="app-search position-absolute">
                         <input type="text" class="form-control" placeholder="Search &amp; enter">
-                        <a class="srh-btn">
-                            <i class="ti-close"></i>
+                        <a class="srh-btn text-dark">
+                            <i class="icon-delete"></i>
                         </a>
                     </form>
                 </li>
@@ -88,7 +88,7 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="font-22 mdi mdi-email-outline"></i>
+                        <i class="font-22 icon-telegram"></i>
 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
@@ -157,7 +157,7 @@
                             <li>
                                 <a class="nav-link text-center link text-dark" href="javascript:void(0);">
                                     <b>See all e-Mails</b>
-                                    <i class="fa fa-angle-right"></i>
+                                    <i class="icon-telegram"></i>
                                 </a>
                             </li>
                         </ul>
@@ -171,7 +171,7 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown border-right">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="mdi mdi-bell-outline font-22"></i>
+                        <i class="icon-telegram font-22"></i>
                         <span class="badge badge-pill badge-info noti">3</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">

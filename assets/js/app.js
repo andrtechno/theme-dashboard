@@ -305,7 +305,7 @@ $(function() {
                 var msg = msg_receive('I watched the storm, so beautiful yet terrific.');
                 msg += msg_sent('That is very deep indeed!');
                 var html = "<div class='user-chat' id='user-chat" + id + "' data-user-id='" + id + "'>";
-                html += "<div class='chat-head'><img src='" + img + "' data-user-id='" + id + "'><span class='status " + status + "'></span><span class='name'>" + name + "</span><span class='opts'><i class='ti-close closeit' data-user-id='" + id + "'></i><i class='ti-minus mini-chat' data-user-id='" + id + "'></i></span></div>";
+                html += "<div class='chat-head'><img src='" + img + "' data-user-id='" + id + "'><span class='status " + status + "'></span><span class='name'>" + name + "</span><span class='opts'><i class='icon-delete closeit' data-user-id='" + id + "'></i><i class='ti-minus mini-chat' data-user-id='" + id + "'></i></span></div>";
                 html += "<div class='chat-body'><ul class='chat-list'>" + msg + "</ul></div>";
                 html += "<div class='chat-footer'><input type='text' data-user-id='" + id + "' placeholder='Type & Enter' class='form-control'></div>";
                 html += "</div>";

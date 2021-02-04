@@ -9,7 +9,7 @@ Error: Undefined variable: "$sidebar-width-full".
 12:     position: absolute;
 13:     width: $sidebar-width-full;
 14:     height: 100%;
-15:     top: 0px;
+15:     top: 0;
 16:     z-index: 10;
 17:     padding-top: 64px;
 18:     background: $sidebar;
@@ -69,4 +69,4 @@ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-listen-4.0.0/lib/sass-listen/interna
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$sidebar-width-full\".\A         on line 13 of scss/core/sidebar/sidebar.scss\A \A 8: Main sidebar\A 9: ******************/\A 10: \A 11: .left-sidebar {\A 12:     position: absolute;\A 13:     width: $sidebar-width-full;\A 14:     height: 100%;\A 15:     top: 0px;\A 16:     z-index: 10;\A 17:     padding-top: 64px;\A 18:     background: $sidebar;"; }
+  content: "Error: Undefined variable: \"$sidebar-width-full\".\A         on line 13 of scss/core/sidebar/sidebar.scss\A \A 8: Main sidebar\A 9: ******************/\A 10: \A 11: .left-sidebar {\A 12:     position: absolute;\A 13:     width: $sidebar-width-full;\A 14:     height: 100%;\A 15:     top: 0;\A 16:     z-index: 10;\A 17:     padding-top: 64px;\A 18:     background: $sidebar;"; }
