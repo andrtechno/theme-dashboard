@@ -2,17 +2,17 @@
 Error: Undefined variable: "$skin1".
         on line 7 of scss/theme-colors/theme-colors.scss
 
-2: #main-wrapper{
-3:     &[data-layout="vertical"], &[data-layout="horizontal"]{
-4:         /*This is for the logo bg*\/
-5:         .topbar .top-navbar .navbar-header{
-6:             &[data-logobg="skin1"]{
-7:                 background: $skin1;
-8:             }
-9:             &[data-logobg="skin2"]{
-10:                 background: $skin2;
-11:             }
-12:             &[data-logobg="skin3"]{
+2: #main-wrapper {
+3:   &[data-layout="vertical"], &[data-layout="horizontal"] {
+4:     /*This is for the logo bg*\/
+5:     .topbar .top-navbar .navbar-header {
+6:       &[data-logobg="skin1"] {
+7:         background: $skin1;
+8:       }
+9: 
+10:       &[data-logobg="skin2"] {
+11:         background: $skin2;
+12:       }
 
 Backtrace:
 scss/theme-colors/theme-colors.scss:7
@@ -101,4 +101,4 @@ C:/Ruby24-x64/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$skin1\".\A         on line 7 of scss/theme-colors/theme-colors.scss\A \A 2: #main-wrapper{\A 3:     &[data-layout=\"vertical\"], &[data-layout=\"horizontal\"]{\A 4:         /*This is for the logo bg*/\A 5:         .topbar .top-navbar .navbar-header{\A 6:             &[data-logobg=\"skin1\"]{\A 7:                 background: $skin1;\A 8:             }\A 9:             &[data-logobg=\"skin2\"]{\A 10:                 background: $skin2;\A 11:             }\A 12:             &[data-logobg=\"skin3\"]{"; }
+  content: "Error: Undefined variable: \"$skin1\".\A         on line 7 of scss/theme-colors/theme-colors.scss\A \A 2: #main-wrapper {\A 3:   &[data-layout=\"vertical\"], &[data-layout=\"horizontal\"] {\A 4:     /*This is for the logo bg*/\A 5:     .topbar .top-navbar .navbar-header {\A 6:       &[data-logobg=\"skin1\"] {\A 7:         background: $skin1;\A 8:       }\A 9: \A 10:       &[data-logobg=\"skin2\"] {\A 11:         background: $skin2;\A 12:       }"; }

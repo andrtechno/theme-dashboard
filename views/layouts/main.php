@@ -38,28 +38,25 @@ $this->params['asset'] = \app\web\themes\dashboard\AdminAsset::register($this);
                 </div>
                 <div class="col-7 align-self-center">
                     <div class="d-flex align-items-center justify-content-end">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="#">Home</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                            </ol>
-                        </nav>
+                        <?php
+                        if (isset($this->params['breadcrumbs'])) {
+                            echo \yii\bootstrap4\Breadcrumbs::widget([
+                                'homeLink' => [
+                                    'label' => Yii::t('yii', 'Home'),
+                                    'url' => ['/admin']
+                                ],
+                                'links' => $this->params['breadcrumbs'],
+                            ]);
+                        }
+                        ?>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
+
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Sales chart -->
-            <!-- ============================================================== -->
+
             <?= $content; ?>
             <div class="card-group">
                 <div class="card">
