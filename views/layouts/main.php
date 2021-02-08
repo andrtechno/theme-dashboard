@@ -171,19 +171,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
                             <?= $content ?>
 
-                            <?php
-                            if (isset(Yii::$app->controller->module) && YII_DEBUG) {
-                                if (isset(Yii::$app->controller->module->id)) {
-                                    $composer = Yii::$app->getModule(Yii::$app->controller->module->id)->composer;
-                                    ?>
-                                    <div class="text-right">
-                                        Version: <?= Yii::$app->extensions[$composer['name']]['version']; ?>
-                                    </div>
-                                    <?php
-                                    // \panix\engine\CMS::dump($composer);
-                                }
-                            }
-                            ?>
 
 
                         </div>
