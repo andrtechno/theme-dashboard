@@ -1,7 +1,7 @@
 <?php
 
 use panix\engine\Html;
-use \panix\mod\admin\widgets\sidebar\BackendNav;
+use app\web\themes\dashboard\sidebar\BackendNav;
 
 //use panix\engine\widgets\langSwitcher\LangSwitcher;
 use panix\engine\CMS;
