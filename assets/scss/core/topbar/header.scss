@@ -34,14 +34,37 @@
         margin: 0px;
         padding: $topbar-navbrand-padding;
         justify-content: space-between;
+        .logo {
 
-        .dark-logo {
+          font-family: Pixelion, Montserrat;
+          padding: 0;
+          padding-left: 40px;
+          font-size: 25px;
+          line-height: 50px;
+          width: 38px;
+          position: relative;
+          font-weight: normal;
+          height: 50px;
+          display: inline-block;
+          color:#fff;
+          &:after {
+            position: absolute;
+            content: '\f002';
+            width: 40px;
+            height: 50px;
+            left: 0;
+            top: 0;
+            font-size: 35px;
+            font-family: Pixelion;
+          }
+        }
+        /*.dark-logo {
           display: none;
         }
 
         .logo-icon {
           margin-right: 5px;
-        }
+        }*/
 
         .sidebartoggler {
           color: $white;

@@ -1,8 +1,26 @@
+<?php
+use panix\engine\Html;
+
+
+
+?>
+
+
 <aside class="left-sidebar" data-sidebarbg="skin5">
-    <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
-        <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
+            <?=
+            \app\web\themes\dashboard\BackendNav::widget([
+                'options' => ['id' => 'sidebarnav','class'=>''],
+            ]);
+            ?>
+            <?php
+            /*echo \app\web\themes\dashboard\SideBar::widget([
+                'encodeLabels' => false,
+                'items' => $this->context->module->getAdminSidebar(),
+                'options' => ['class' => 'flex-column'],
+            ]);*/
+            ?>
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     &mdash; <span class="hide-menu ml-2">Personal</span>

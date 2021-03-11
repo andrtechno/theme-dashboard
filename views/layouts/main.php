@@ -28,9 +28,6 @@ $this->params['asset'] = \app\web\themes\dashboard\AdminAsset::register($this);
     <?= $this->render('partials/_sidebar'); ?>
 
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-5 align-self-center">
