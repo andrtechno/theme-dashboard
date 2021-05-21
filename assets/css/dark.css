@@ -17,9 +17,9 @@ a:hover {
 .pagination > li.page-item.active > a.page-link:hover {
   background: #b5bcbf;
   color: #fff;
-  -webkit-box-shadow: 0px 0px true -1px rgba(0, 0, 0, 0.125);
-  -moz-box-shadow: 0px 0px true -1px rgba(0, 0, 0, 0.125);
-  box-shadow: 0px 0px true -1px rgba(0, 0, 0, 0.125);
+  -webkit-box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.125);
+  -moz-box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.125);
+  box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.125);
 }
 
 .pagination > li.page-item > a.page-link {
@@ -27,9 +27,9 @@ a:hover {
   color: #343a40;
 }
 .pagination > li.page-item > a.page-link:hover {
-  -webkit-box-shadow: 0px 0px true -1px #e0e0e0;
-  -moz-box-shadow: 0px 0px true -1px #e0e0e0;
-  box-shadow: 0px 0px true -1px #e0e0e0;
+  -webkit-box-shadow: 0px 0px 1px -1px #e0e0e0;
+  -moz-box-shadow: 0px 0px 1px -1px #e0e0e0;
+  box-shadow: 0px 0px 1px -1px #e0e0e0;
   background: #e8e8e8;
 }
 
@@ -111,12 +111,11 @@ a:hover {
   .nav-tabs .nav-item .nav-link {
     border: 0;
     border-top: 1px solid #fff;
-    border-bottom: 0;
     border-right: 1px solid #e0e0e0;
   }
   .nav-tabs .nav-item .nav-link.active, .nav-tabs .nav-item .nav-link.active:hover, .nav-tabs .nav-item .nav-link.active:focus {
     border-right: 1px solid #e0e0e0;
-    border-bottom: 1px solid transparent;
+    border-bottom: 0;
   }
 }
 
@@ -275,9 +274,9 @@ a:hover {
 }
 
 .sidebar-nav li.active a {
-  -webkit-box-shadow: 0px 0px true -1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px true -1px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px true -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.5);
 }
 
 #sidebar_menu li a,
@@ -293,9 +292,9 @@ a:hover {
 }
 .card-option > a.btn-link:hover, .card-option > a.btn-link:focus {
   border-left: 1px solid #e0e0e0;
-  -webkit-box-shadow: 0px 0px true -1px #e0e0e0;
-  -moz-box-shadow: 0px 0px true -1px #e0e0e0;
-  box-shadow: 0px 0px true -1px #e0e0e0;
+  -webkit-box-shadow: 0px 0px 1px -1px #e0e0e0;
+  -moz-box-shadow: 0px 0px 1px -1px #e0e0e0;
+  box-shadow: 0px 0px 1px -1px #e0e0e0;
 }
 
 .breadcrumbs li .active,
