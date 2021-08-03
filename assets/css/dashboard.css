@@ -1458,6 +1458,7 @@ form .col-form-label {
 html {
   position: relative;
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
