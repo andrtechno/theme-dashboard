@@ -35,14 +35,14 @@ a:hover {
 .pagination > li.page-item.active > a.page-link:hover {
   background: #b5bcbf;
   color: #fff;
-  @include box-shadow(rgba(0, 0, 0, 0.125), true);
+  @include box-shadow(rgba(0, 0, 0, 0.125), 1px);
 }
 
 .pagination > li.page-item > a.page-link {
   border-color: $block-border;
   color: $primary_color;
   &:hover {
-    @include box-shadow($block-border, true);
+    @include box-shadow($block-border, 1px);
     //@include gradient-x(#f6f6f6, #e8e8e8);
     background: #e8e8e8;
   }
@@ -133,13 +133,12 @@ a:hover {
     @media (min-width: 768px) {
       border: 0;
       border-top: 1px solid #fff;
-      border-bottom: 0;
       border-right: 1px solid $block-border;
       &.active,
       &.active:hover,
       &.active:focus {
         border-right: 1px solid $block-border;
-        border-bottom: 1px solid transparent;
+        border-bottom: 0;
       }
     }
   }
@@ -301,7 +300,7 @@ a:hover {
 }
 
 .sidebar-nav li.active a {
-  @include box-shadow(rgba(0, 0, 0, 0.500), true);
+  @include box-shadow(rgba(0, 0, 0, 0.500), 1px);
 }
 
 #sidebar_menu li a,
@@ -317,7 +316,7 @@ a:hover {
   &:hover,
   &:focus {
     border-left: 1px solid $block-border;
-    @include box-shadow($block-border, true);
+    @include box-shadow($block-border, 1px);
   }
 }
 
