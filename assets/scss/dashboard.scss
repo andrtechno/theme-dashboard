@@ -1,4 +1,4 @@
-﻿@import "../../../../../vendor/bower-asset/bootstrap/scss/functions";
+@import "../../../../../vendor/bower-asset/bootstrap/scss/functions";
 @import "../../../../../vendor/bower-asset/bootstrap/scss/variables";
 @import "mixins";
 @import "base";
@@ -1331,7 +1331,8 @@ button.dropdown-toggle::after{
 }
 
 /* Yii */
-form div.required label:after {
+form div.required > label:after,
+form div.required label.col-form-label:after{
   content: " * ";
   color: $color-danger;
 }
