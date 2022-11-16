@@ -211,7 +211,7 @@ JS;
             ],
             'items' => [
                 [
-                    'label' => Html::icon('user-outline') . ' ' . Yii::$app->user->displayName,
+                    'label' => Html::icon('user-outline') . ' <span class="d-none d-md-inline-block d-sm-inline-block d-lg-inline-block">' . Yii::$app->user->displayName.'</span>',
                     'url' => ['/site/index']
                 ],
                 [
