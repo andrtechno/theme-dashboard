@@ -198,7 +198,11 @@ a:hover,
 .nav-link a {
   text-decoration: none;
 }
-
+.navbar-right{
+  top:0;
+  height: 50px;
+  align-items: center;
+}
 .copy {
   position: relative;
 }
@@ -1698,7 +1702,7 @@ a.desc:after {
       margin-right: 0;
     }
     > a {
-      span {
+      span.badge {
         position: absolute;
         top: 5px;
         right: 2px;
