@@ -116,14 +116,12 @@ class BackendNav extends \yii\bootstrap4\Nav
         $result = [];
         $modules = Yii::$app->getModules();
         foreach ($modules as $mid => $module) {
-
-            //Yii::import("mod.{$mid}.{$moduleName}Module");
-            if (isset(Yii::$app->getModule($mid)->adminMenu)) {
+            if (method_exists(Yii::$app->getModule($mid),'getAdminMenu')) {
                 $result = ArrayHelper::merge($result, Yii::$app->getModule($mid)->getAdminMenu());
             }
         }
 
-        $resultFinish = array();
+        $resultFinish = [];
         foreach ($result as $mid => $res) {
             $resultFinish[$mid] = $res;
             if (isset($res['items'])) {
