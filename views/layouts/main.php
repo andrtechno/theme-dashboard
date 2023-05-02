@@ -85,7 +85,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                         }
                                     }
                                     ?>
-                                    <?= Html::encode($this->context->pageName) ?>
+                                    <?= $this->context->pageName; ?>
                                 </h1>
                             </div>
 
