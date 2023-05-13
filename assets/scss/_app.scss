@@ -1,0 +1,81 @@
+.required label:after {
+  content: '*';
+  color: $danger;
+  margin-left: 5px;
+}
+
+.has-error .help-block {
+  color: $danger;
+}
+
+.caret-off::before {
+  display: none;
+}
+
+.caret-off::after {
+  display: none;
+}
+
+.pwd-switch {
+  display: block;
+  width: 18px;
+  cursor: pointer;
+}
+
+a[data-sort] {
+  &:after {
+    position: relative;
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f160";
+    margin-left: 5px;
+  }
+
+  &.asc:after {
+    content: "\f161";
+  }
+}
+
+.loading {
+  position: relative;
+
+  &:after {
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+tr.loading-progress {
+  position: relative;
+
+  &:after {
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.dz-processing, .dz-success, .dz-complete {
+
+}
+
+#printModal .modal-dialog {
+  max-width: 800px;
+}
+
+.modal[data-notify="container"] {
+  background-color: rgba(0, 0, 0, .7);
+}
+
+//sort-amount-up

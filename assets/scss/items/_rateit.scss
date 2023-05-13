@@ -1,0 +1,125 @@
+.rateit {
+  display: -moz-inline-box;
+  display: inline-block;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none
+}
+
+.rateit .rateit-range * {
+  display: block
+}
+
+.rateit .rateit-hover, .rateit .rateit-selected {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0
+}
+
+.rateit .rateit-hover-rtl, .rateit .rateit-selected-rtl {
+  left: auto;
+  right: 0
+}
+
+.rateit .rateit-hover {
+  color: #ffbc00
+}
+
+.rateit .rateit-hover-rtl {
+  background-position: right -32px
+}
+
+.rateit .rateit-selected {
+  color: #fa5c7c
+}
+
+.rateit .rateit-selected-rtl {
+  background-position: right -16px
+}
+
+.rateit .rateit-preset {
+  color: #fd7e14
+}
+
+.rateit button.rateit-reset {
+  width: 16px;
+  height: 16px;
+  float: left;
+  outline: 0;
+  border: none;
+  padding: 0
+}
+
+.rateit .rateit-reset span {
+  display: none
+}
+
+.rateit .rateit-range {
+  position: relative;
+  display: -moz-inline-box;
+  display: inline-block;
+  height: 16px;
+  outline: 0
+}
+
+.rateit.rateit-font .rateit-reset {
+  width: .6em;
+  height: .6em;
+  margin-right: 5px;
+  margin-top: 5px;
+  background: #dee2e6;
+  border-radius: 50%;
+  position: relative
+}
+
+.rateit.rateit-font .rateit-reset span {
+  display: block;
+  height: calc(50% - .045em);
+  top: 2px;
+  position: absolute;
+  border-bottom: 2px solid #6c757d;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%
+}
+
+.rateit.rateit-font .rateit-reset:hover, .rateit.rateit-font button.rateit-reset:focus {
+  background: #fa5c7c
+}
+
+.rateit.rateit-font .rateit-reset:hover span, .rateit.rateit-font button.rateit-reset:focus span {
+  border-color: #fff
+}
+
+.rateit-mdi {
+  font-family: 'Material Design Icons'
+}
+
+.rateit-font {
+  font-size: 24px;
+  line-height: 1em
+}
+
+.rateit-font .rateit-range {
+  background: 0 0;
+  height: auto
+}
+
+.rateit-font .rateit-range > div {
+  background: 0 0;
+  overflow: hidden;
+  cursor: default;
+  white-space: nowrap
+}
+
+.rateit-font .rateit-empty {
+  color: #ced4da
+}
+
+.rateit .rateit-hover-rtl, .rateit .rateit-selected-rtl {
+  right: auto
+}

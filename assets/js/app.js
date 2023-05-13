@@ -1,364 +1,401 @@
-// Admin Panel settings
-$.fn.AdminSettings = function(settings) {
-    var myid = this.attr("id");
-    // General option for vertical header 
-    var defaults = {
-        Theme: true, // this can be true or false ( true means dark and false means light ),
-        Layout: 'vertical', // 
-        LogoBg: 'skin1', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6 
-        NavbarBg: 'skin6', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6 
-        SidebarType: 'full', // You can change it full / mini-sidebar
-        SidebarColor: 'skin1', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
-        SidebarPosition: false, // it can be true / false
-        HeaderPosition: false, // it can be true / false
-        BoxedLayout: false, // it can be true / false 
-    };
-    var settings = $.extend({}, defaults, settings);
-    // Attribute functions 
-    var AdminSettings = {
-        // Settings INIT
-        AdminSettingsInit: function() {
-            AdminSettings.ManageTheme();
-            AdminSettings.ManageThemeLayout();
-            AdminSettings.ManageThemeBackground();
-            AdminSettings.ManageSidebarType();
-            AdminSettings.ManageSidebarColor();
-            AdminSettings.ManageSidebarPosition();
-            AdminSettings.ManageBoxedLayout();
-        }, //****************************
-        // ManageThemeLayout functions
-        //****************************
-        ManageTheme: function() {
-            var themeview = settings.Theme;
-            switch (settings.Layout) {
-                case 'vertical':
-                    if (themeview == true) {
-                        $('body').attr("data-theme", 'dark');
-                        $("#theme-view").prop("checked", !0);
-                    } else {
-                        $('#' + myid).attr("data-theme", 'light');
-                        $("body").prop("checked", !1);
-                    }
-                    break;
+!function (i) {
+    "use strict";
 
-                default:
-            }
-        }, //****************************
-        // ManageThemeLayout functions
-        //****************************
-        ManageThemeLayout: function() {
-            switch (settings.Layout) {
-                case 'horizontal':
-                    $('#' + myid).attr("data-layout", "horizontal");
-                    break;
-                case 'vertical':
-                    $('#' + myid).attr("data-layout", "vertical");
-                    //$('.scroll-sidebar').perfectScrollbar({});
-                    break;
-                default:
-            }
-        }, //****************************
-        // ManageSidebarType functions 
-        //****************************
-        ManageThemeBackground: function() {
-            // Logo bg attribute
-            function setlogobg() {
-                var lbg = settings.LogoBg;
-                if (lbg != undefined && lbg != "") {
-                    $('#' + myid + ' .topbar .top-navbar .navbar-header').attr("data-logobg", lbg);
-                } else {
-                    $('#' + myid + ' .topbar .top-navbar .navbar-header').attr("data-logobg", "skin1");
-                }
-            };
-            setlogobg();
-            // Navbar bg attribute
-            function setnavbarbg() {
-                var nbg = settings.NavbarBg;
-                if (nbg != undefined && nbg != "") {
-                    $('#' + myid + ' .topbar .navbar-collapse').attr("data-navbarbg", nbg);
-                    $('#' + myid + ' .topbar').attr("data-navbarbg", nbg);
-                    $('#' + myid).attr("data-navbarbg", nbg);
-                } else {
-                    $('#' + myid + ' .topbar .navbar-collapse').attr("data-navbarbg", "skin1");
-                    $('#' + myid + ' .topbar').attr("data-navbarbg", "skin1");
-                    $('#' + myid).attr("data-navbarbg", "skin1");
-                }
-            };
-            setnavbarbg();
-        }, //****************************
-        // ManageThemeLayout functions
-        //****************************
-        ManageSidebarType: function() {
-            switch (settings.SidebarType) {
-                //****************************
-                // If the sidebar type has full
-                //****************************     
-                case 'full':
-                    $('#' + myid).attr("data-sidebartype", "full");
-                    //****************************
-                    /* This is for the mini-sidebar if width is less then 1170*/
-                    //**************************** 
-                    var setsidebartype = function() {
-                        var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
-                        if (width < 1170) {
-                            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-                        } else {
-                            $("#main-wrapper").attr("data-sidebartype", "full");
-                        }
-                    };
-                    $(window).ready(setsidebartype);
-                    $(window).on("resize", setsidebartype);
-                    //****************************
-                    /* This is for sidebartoggler*/
-                    //****************************
-                    $('.sidebartoggler').on("click", function() {
-                        console.log('sss2');
-                        $("#main-wrapper").toggleClass("mini-sidebar");
-                        $(".sidebartoggler i").toggleClass("icon-delete");
-                        if ($("#main-wrapper").hasClass("mini-sidebar")) {
-                            $(".sidebartoggler").prop("checked", !0);
-                            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-                        } else {
-                            $(".sidebartoggler").prop("checked", !1);
-                            $("#main-wrapper").attr("data-sidebartype", "full");
-                        }
-                    });
-                    break;
-                    //****************************
-                    // If the sidebar type has mini-sidebar
-                    //****************************       
-                case 'mini-sidebar':
-                    $('#' + myid).attr("data-sidebartype", "mini-sidebar");
-                    //****************************
-                    /* This is for sidebartoggler*/
-                    //****************************
-                    $('.sidebartoggler').on("click", function() {
-                        console.log('sss');
-                        $("#main-wrapper").toggleClass("mini-sidebar");
-                        $(".sidebartoggler i").toggleClass("icon-delete");
-                        if ($("#main-wrapper").hasClass("mini-sidebar")) {
-                            $(".sidebartoggler").prop("checked", !0);
-                            $("#main-wrapper").attr("data-sidebartype", "full");
-                        } else {
-                            $(".sidebartoggler").prop("checked", !1);
-                            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-                        }
-                    });
-                    break;
-                    //****************************
-                    // If the sidebar type has iconbar
-                    //****************************       
-                case 'iconbar':
-                    $('#' + myid).attr("data-sidebartype", "iconbar");
-                    //****************************
-                    /* This is for the mini-sidebar if width is less then 1170*/
-                    //**************************** 
-                    var setsidebartype = function() {
-                        var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
-                        if (width < 1170) {
-                            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-                            $("#main-wrapper").addClass("mini-sidebar");
-                        } else {
-                            $("#main-wrapper").attr("data-sidebartype", "iconbar");
-                            $("#main-wrapper").removeClass("mini-sidebar");
-                        }
-                    };
-                    $(window).ready(setsidebartype);
-                    $(window).on("resize", setsidebartype);
-                    //****************************
-                    /* This is for sidebartoggler*/
-                    //****************************
-                    $('.sidebartoggler').on("click", function() {
-                        console.log('sss3');
-                        $("#main-wrapper").toggleClass("mini-sidebar");
-                        $(".sidebartoggler i").toggleClass("icon-delete");
-                        if ($("#main-wrapper").hasClass("mini-sidebar")) {
-                            $(".sidebartoggler").prop("checked", !0);
-                            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-                        } else {
-                            $(".sidebartoggler").prop("checked", !1);
-                            $("#main-wrapper").attr("data-sidebartype", "iconbar");
-                        }
-                    });
-                    break;
-                    //****************************
-                    // If the sidebar type has overlay
-                    //****************************       
-                case 'overlay':
-                    $('#' + myid).attr("data-sidebartype", "overlay");
-                    var setsidebartype = function() {
-                        var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
-                        if (width < 767) {
-                            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
-                            $("#main-wrapper").addClass("mini-sidebar");
-                        } else {
-                            $("#main-wrapper").attr("data-sidebartype", "overlay");
-                            $("#main-wrapper").removeClass("mini-sidebar");
-                        }
-                    };
-                    $(window).ready(setsidebartype);
-                    $(window).on("resize", setsidebartype);
-                    //****************************
-                    /* This is for sidebartoggler*/
-                    //****************************
-                    $('.sidebartoggler').on("click", function() {
-                        console.log('sidebartoggler');
-                        $("#main-wrapper").toggleClass("show-sidebar");
-                        if ($("#main-wrapper").hasClass("show-sidebar")) {
-                            //$(".sidebartoggler").prop("checked", !0);
-                            //$("#main-wrapper").attr("data-sidebartype","mini-sidebar");
-                        } else {
-                            //$(".sidebartoggler").prop("checked", !1);
-                            //$("#main-wrapper").attr("data-sidebartype","iconbar");
-                        }
-                    });
-                    break;
-                default:
-            }
-        }, //****************************
-        // ManageSidebarColor functions 
-        //****************************
-        ManageSidebarColor: function() {
-            // Logo bg attribute
-            function setsidebarbg() {
-                var sbg = settings.SidebarColor;
-                if (sbg != undefined && sbg != "") {
-                    $('#' + myid + ' .left-sidebar').attr("data-sidebarbg", sbg);
-                } else {
-                    $('#' + myid + ' .left-sidebar').attr("data-sidebarbg", "skin1");
-                }
-            };
-            setsidebarbg();
-        }, //****************************
-        // ManageSidebarPosition functions
-        //****************************
-        ManageSidebarPosition: function() {
-            var sidebarposition = settings.SidebarPosition;
-            var headerposition = settings.HeaderPosition;
-            switch (settings.Layout) {
-                case 'vertical':
-                    if (sidebarposition == true) {
-                        $('#' + myid).attr("data-sidebar-position", 'fixed');
-                        $("#sidebar-position").prop("checked", !0);
-                    } else {
-                        $('#' + myid).attr("data-sidebar-position", 'absolute');
-                        $("#sidebar-position").prop("checked", !1);
-                    }
-                    if (headerposition == true) {
-                        $('#' + myid).attr("data-header-position", 'fixed');
-                        $("#header-position").prop("checked", !0);
-                    } else {
-                        $('#' + myid).attr("data-header-position", 'relative');
-                        $("#header-position").prop("checked", !1);
-                    }
-                    break;
-                default:
-            }
-        }, //****************************
-        // ManageBoxedLayout functions
-        //****************************
-        ManageBoxedLayout: function() {
-            var boxedlayout = settings.BoxedLayout;
-            switch (settings.Layout) {
-                case 'vertical':
-                    if (boxedlayout == true) {
-                        $('#' + myid).attr("data-boxed-layout", 'boxed');
-                        $("#boxed-layout").prop("checked", !0);
-                    } else {
-                        $('#' + myid).attr("data-boxed-layout", 'full');
-                        $("#boxed-layout").prop("checked", !1);
-                    }
-                    break;
-                case 'horizontal':
-                    if (boxedlayout == true) {
-                        $('#' + myid).attr("data-boxed-layout", 'boxed');
-                        $("#boxed-layout").prop("checked", !0);
-                    } else {
-                        $('#' + myid).attr("data-boxed-layout", 'full');
-                        $("#boxed-layout").prop("checked", !1);
-                    }
-                    break;
-                default:
-            }
-        },
-    };
-    AdminSettings.AdminSettingsInit();
-};
-//****************************
-// This is for the chat customizer setting
-//****************************
-$(function() {
-    var chatarea = $("#chat");
-    $('#chat .message-center a').on('click', function() {
-        var name = $(this).find(".mail-contnet h5").text();
-        var img = $(this).find(".user-img img").attr("src");
-        var id = $(this).attr("data-user-id");
-        var status = $(this).find(".profile-status").attr("data-status");
-        if ($(this).hasClass("active")) {
-            $(this).toggleClass("active");
-            $(".chat-windows #user-chat" + id).hide();
-        } else {
-            $(this).toggleClass("active");
-            if ($(".chat-windows #user-chat" + id).length) {
-                $(".chat-windows #user-chat" + id).removeClass("mini-chat").show();
-            } else {
-                var msg = msg_receive('I watched the storm, so beautiful yet terrific.');
-                msg += msg_sent('That is very deep indeed!');
-                var html = "<div class='user-chat' id='user-chat" + id + "' data-user-id='" + id + "'>";
-                html += "<div class='chat-head'><img src='" + img + "' data-user-id='" + id + "'><span class='status " + status + "'></span><span class='name'>" + name + "</span><span class='opts'><i class='icon-delete closeit' data-user-id='" + id + "'></i><i class='ti-minus mini-chat' data-user-id='" + id + "'></i></span></div>";
-                html += "<div class='chat-body'><ul class='chat-list'>" + msg + "</ul></div>";
-                html += "<div class='chat-footer'><input type='text' data-user-id='" + id + "' placeholder='Type & Enter' class='form-control'></div>";
-                html += "</div>";
-                $(".chat-windows").append(html);
-            }
-        }
-    });
-    $(document).on('click', ".chat-windows .user-chat .chat-head .closeit", function(e) {
-        var id = $(this).attr("data-user-id");
-        $(".chat-windows #user-chat" + id).hide();
-        $("#chat .message-center .user-info#chat_user_" + id).removeClass("active");
-    });
-    $(document).on('click', ".chat-windows .user-chat .chat-head img, .chat-windows .user-chat .chat-head .mini-chat", function(e) {
-        var id = $(this).attr("data-user-id");
-        if (!$(".chat-windows #user-chat" + id).hasClass("mini-chat")) {
-            $(".chat-windows #user-chat" + id).addClass("mini-chat");
-        } else {
-            $(".chat-windows #user-chat" + id).removeClass("mini-chat");
-        }
-    });
-    $(document).on('keypress', ".chat-windows .user-chat .chat-footer input", function(e) {
-        if (e.keyCode == 13) {
-            var id = $(this).attr("data-user-id");
-            var msg = $(this).val();
-            msg = msg_sent(msg);
-            $(".chat-windows #user-chat" + id + " .chat-body .chat-list").append(msg);
-            $(this).val("");
-            $(this).focus();
-        }
-       // $(".chat-windows #user-chat" + id + " .chat-body").perfectScrollbar({
-       //     suppressScrollX: true
-       // });
-    });
-    $(".page-wrapper").on('click', function(e) {
-        $('.chat-windows').addClass('hide-chat');
-        $('.chat-windows').removeClass('show-chat');
-    });
-    $(".service-panel-toggle").on('click', function(e) {
-        $('.chat-windows').addClass('show-chat');
-        $('.chat-windows').removeClass('hide-chat');
-    });
-});
+    function t() {
+        this.body = i("body"), this.window = i(window), this.menuContainer = i("#leftside-menu-container")
+    }
 
-function msg_receive(msg) {
-    var d = new Date();
-    var h = d.getHours();
-    var m = d.getMinutes();
-    return "<li class='msg_receive'><div class='chat-content'><div class='box bg-light-info'>" + msg + "</div></div><div class='chat-time'>" + h + ":" + m + "</div></li>";
-}
+    t.prototype._reset = function () {
+        this.body.removeAttr("data-leftbar-theme")
+    }, t.prototype.activateCondensedSidebar = function () {
+        this.body.attr("data-leftbar-compact-mode", "condensed")
+    }, t.prototype.deactivateCondensedSidebar = function () {
+        this.body.removeAttr("data-leftbar-compact-mode")
+    }, t.prototype.activateScrollableSidebar = function () {
+        this.body.attr("data-leftbar-compact-mode", "scrollable")
+    }, t.prototype.deactivateScrollableSidebar = function () {
+        this.body.removeAttr("data-leftbar-compact-mode")
+    }, t.prototype.activateDefaultTheme = function () {
+        this._reset()
+    }, t.prototype.activateLightTheme = function () {
+        this._reset(), this.body.attr("data-leftbar-theme", "light")
+    }, t.prototype.activateDarkTheme = function () {
+        this._reset(), this.body.attr("data-leftbar-theme", "dark")
+    }, t.prototype.initMenu = function () {
+        var t, e = this;
+        this._reset(), i(document).on("click", ".button-menu-mobile", function (t) {
+            t.preventDefault(), e.body.toggleClass("sidebar-enable"), 576 <= e.window.width() && ("condensed" === e.body.attr("data-leftbar-compact-mode") ? e.deactivateCondensedSidebar() : e.activateCondensedSidebar())
+        }), i(".side-nav").length && (t = i(".side-nav li .collapse"), i(".side-nav li [data-bs-toggle='collapse']").on("click", function (t) {
+            return !1
+        }), t.on({
+            "show.bs.collapse": function (t) {
+                var e = i(t.target).parents(".collapse.show");
+                i(".side-nav .collapse.show").not(t.target).not(e).collapse("hide")
+            }
+        }));
+        var a = document.querySelectorAll("ul.navbar-nav .dropdown .dropdown-toggle"), o = !1;
+        a.forEach(function (a) {
+            a.addEventListener("click", function (t) {
+                var e;
+                a.parentElement.classList.contains("nav-item") || (o = !0, e = a.parentElement.parentElement.parentElement.querySelector(".nav-link"), bootstrap.Dropdown.getInstance(e).show(), a.ariaExpanded ? bootstrap.Dropdown.getInstance(a).hide() : bootstrap.Dropdown.getInstance(e).show(), o = !0)
+            }), a.addEventListener("hide.bs.dropdown", function (t) {
+                o && (t.preventDefault(), t.stopPropagation(), o = !1)
+            }), a.addEventListener("show.bs.dropdown", function (t) {
+                o || a.parentElement.classList.contains("nav-item") || (t.preventDefault(), t.stopPropagation(), o = !0)
+            })
+        })
+    }, t.prototype.init = function () {
+        this.initMenu()
+    }, i.LeftSidebar = new t, i.LeftSidebar.Constructor = t
+}(window.jQuery), function (a) {
+    "use strict";
 
-function msg_sent(msg) {
-    var d = new Date();
-    var h = d.getHours();
-    var m = d.getMinutes();
-    return "<li class='odd msg_sent'><div class='chat-content'><div class='box bg-light-info'>" + msg + "</div><br></div><div class='chat-time'>" + h + ":" + m + "</div></li>";
-}
+    function t() {
+        this.$body = a("body"), this.$window = a(window)
+    }
+
+    t.prototype.initMenu = function () {
+        a(".topnav-menu").length && (a(".topnav-menu li a").each(function () {
+            var t = window.location.href.split(/[?#]/)[0];
+            this.href == t && (a(this).addClass("active"), a(this).parent().parent().addClass("active"), a(this).parent().parent().parent().parent().addClass("active"), a(this).parent().parent().parent().parent().parent().parent().addClass("active"))
+        }), a(".navbar-toggle").on("click", function () {
+            a(this).toggleClass("open"), a("#navigation").slideToggle(400)
+        }))
+    }, t.prototype.initSearch = function () {
+        var e = a(".navbar-custom .dropdown:not(.app-search)");
+        a(document).on("click", function (t) {
+            return "top-search" == t.target.id || t.target.closest("#search-dropdown") ? a("#search-dropdown").addClass("d-block") : a("#search-dropdown").removeClass("d-block"), !0
+        }), a("#top-search").on("focus", function (t) {
+            return t.preventDefault(), e.children(".dropdown-menu.show").removeClass("show"), a("#search-dropdown").addClass("d-block"), !1
+        }), e.on("show.bs.dropdown", function () {
+            a("#search-dropdown").removeClass("d-block")
+        })
+    }, t.prototype.init = function () {
+        this.initMenu(), this.initSearch()
+    }, a.Topbar = new t, a.Topbar.Constructor = t
+}(window.jQuery), function (a) {
+    "use strict";
+
+    function t() {
+        this.body = a("body"), this.window = a(window)
+    }
+
+    t.prototype._selectOptionsFromConfig = function () {
+        var t = a.App.getLayoutConfig();
+        if (t) {
+            switch (a(".end-bar input[type=checkbox]").prop("checked", !1), t.sideBarTheme) {
+                case"default":
+                    a("#default-check").prop("checked", !0);
+                    break;
+                case"light":
+                    a("#light-check").prop("checked", !0);
+                    break;
+                case"dark":
+                    a("#dark-check").prop("checked", !0)
+            }
+            t.isBoxed ? a("#boxed-check").prop("checked", !0) : a("#fluid-check").prop("checked", !0), t.isCondensed && a("#condensed-check").prop("checked", !0), t.isScrollable && a("#scrollable-check").prop("checked", !0), t.isScrollable || t.isCondensed || a("#fixed-check").prop("checked", !0), t.isDarkModeEnabled || (a("#light-mode-check").prop("checked", !0), "vertical" === t.layout && a("input[type=checkbox][name=theme]").prop("disabled", !1)), t.isDarkModeEnabled && (a("#dark-mode-check").prop("checked", !0), "vertical" === t.layout && a("input[type=checkbox][name=theme]").prop("disabled", !1))
+        }
+    }, t.prototype.toggleRightSideBar = function () {
+        this.body.toggleClass("end-bar-enabled"), this._selectOptionsFromConfig()
+    }, t.prototype.init = function () {
+        var e = this;
+        a(document).on("click", ".end-bar-toggle", function () {
+            e.toggleRightSideBar()
+        }), a(document).on("click", "body", function (t) {
+            0 < a(t.target).closest(".end-bar-toggle, .end-bar").length || 0 < a(t.target).closest(".leftside-menu, .side-nav").length || a(t.target).hasClass("button-menu-mobile") || 0 < a(t.target).closest(".button-menu-mobile").length || (a("body").removeClass("end-bar-enabled"), a("body").removeClass("sidebar-enable"))
+        }), a("input[type=checkbox][name=width]").change(function () {
+            switch (a(this).val()) {
+                case"fluid":
+                    a.App.activateFluid();
+                    break;
+                case"boxed":
+                    a.App.activateBoxed()
+            }
+            e._selectOptionsFromConfig()
+        }), a("input[type=checkbox][name=theme]").change(function () {
+            switch (a(this).val()) {
+                case"default":
+                    a.App.activateDefaultSidebarTheme();
+                    break;
+                case"light":
+                    a.App.activateLightSidebarTheme();
+                    break;
+                case"dark":
+                    a.App.activateDarkSidebarTheme()
+            }
+            e._selectOptionsFromConfig()
+        }), a("input[type=checkbox][name=compact]").change(function () {
+            switch (a(this).val()) {
+                case"fixed":
+                    a.App.deactivateCondensedSidebar(), a.App.deactivateScrollableSidebar();
+                    break;
+                case"scrollable":
+                    a.App.activateScrollableSidebar();
+                    break;
+                case"condensed":
+                    a.App.activateCondensedSidebar()
+            }
+            e._selectOptionsFromConfig()
+        }), a("input[type=checkbox][name=color-scheme-mode]").change(function () {
+            switch (a(this).val()) {
+                case"light":
+                    a.App.deactivateDarkMode(), a("#default-check").prop("checked", !0), a("input[type=checkbox][name=theme]").prop("disabled", !1);
+                    break;
+                case"dark":
+                    a.App.activateDarkMode(), a("#dark-check").prop("checked", !0)
+            }
+            e._selectOptionsFromConfig()
+        }), a("#resetBtn").on("click", function (t) {
+            t.preventDefault(), a.App.resetLayout(function () {
+                e._selectOptionsFromConfig()
+            })
+        })
+    }, a.RightBar = new t, a.RightBar.Constructor = t
+}(window.jQuery), function (a) {
+    "use strict";
+
+    function t() {
+        this.body = a("body"), this.window = a(window), this._config = {}, this.defaultSelectedStyle = null
+    }
+
+    var e = "default", o = "light", i = "dark",
+        n = {sideBarTheme: e, isBoxed: !1, isCondensed: !1, isScrollable: !1, isDarkModeEnabled: !1};
+    t.prototype._saveConfig = function (t) {
+        a.extend(this._config, t)
+    }, t.prototype._getStoredConfig = function () {
+        var t = this.body.data("layoutConfig"), e = n;
+        return t && (e.sideBarTheme = t.leftSideBarTheme, e.isBoxed = t.layoutBoxed, e.isCondensed = t.leftSidebarCondensed, e.isScrollable = t.leftSidebarScrollable, e.isDarkModeEnabled = t.darkMode), e
+    }, t.prototype._applyConfig = function () {
+        var t = this;
+        switch (this._config = this._getStoredConfig(), a.LeftSidebar.init(), t._config.sideBarTheme) {
+            case i:
+                t.activateDarkSidebarTheme();
+                break;
+            case o:
+                t.activateLightSidebarTheme()
+        }
+        t._config.isDarkModeEnabled ? t.activateDarkMode() : t.deactivateDarkMode(), t._config.isBoxed && t.activateBoxed(), t._config.isCondensed && t.activateCondensedSidebar(), t._config.isScrollable && t.activateScrollableSidebar()
+    }, t.prototype._adjustLayout = function () {
+        var t;
+        750 <= this.window.width() && this.window.width() <= 1028 ? this.activateCondensedSidebar(!0) : (t = this._getStoredConfig()).isCondensed || t.isScrollable || this.deactivateCondensedSidebar()
+    }, t.prototype.activateFluid = function () {
+        this._saveConfig({isBoxed: !1}), this.body.attr("data-layout-mode", "fluid")
+    }, t.prototype.activateBoxed = function () {
+        this._saveConfig({isBoxed: !0}), this.body.attr("data-layout-mode", "boxed")
+    }, t.prototype.activateCondensedSidebar = function (t) {
+        t || this._saveConfig({isCondensed: !0, isScrollable: !1}), a.LeftSidebar.activateCondensedSidebar()
+    }, t.prototype.deactivateCondensedSidebar = function () {
+        this._saveConfig({isCondensed: !1}), a.LeftSidebar.deactivateCondensedSidebar()
+    }, t.prototype.activateScrollableSidebar = function () {
+        this._saveConfig({isScrollable: !0, isCondensed: !1}), a.LeftSidebar.activateScrollableSidebar()
+    }, t.prototype.deactivateScrollableSidebar = function () {
+        this._saveConfig({isScrollable: !1}), a.LeftSidebar.deactivateScrollableSidebar()
+    }, t.prototype.activateDefaultSidebarTheme = function () {
+        a.LeftSidebar.activateDefaultTheme(), this._saveConfig({sideBarTheme: e})
+    }, t.prototype.activateLightSidebarTheme = function () {
+        a.LeftSidebar.activateLightTheme(), this._saveConfig({sideBarTheme: o})
+    }, t.prototype.activateDarkSidebarTheme = function () {
+        a.LeftSidebar.activateDarkTheme(), this._saveConfig({sideBarTheme: i})
+    }, t.prototype.activateDarkMode = function () {
+        var t = this;
+        this.body.css("visibility", "hidden"), a("#light-style").attr("disabled", !0), a("#dark-style").removeAttr("disabled"), setTimeout(function () {
+            t.body.css("visibility", "visible")
+        }, 500), "detached" === !this.body.attr("data-layout") ? (a.LeftSidebar.activateDarkTheme(), this._saveConfig({
+            isDarkModeEnabled: !0,
+            sideBarTheme: i
+        })) : this._saveConfig({isDarkModeEnabled: !0})
+    }, t.prototype.deactivateDarkMode = function () {
+        var t = this;
+        this.body.css("visibility", "hidden"), a("#dark-style").attr("disabled", !0), a("#light-style").removeAttr("disabled"), setTimeout(function () {
+            t.body.css("visibility", "visible")
+        }, 500), this._saveConfig({isDarkModeEnabled: !1})
+    }, t.prototype.clearSavedConfig = function () {
+        this._config = n
+    }, t.prototype.getConfig = function () {
+        return this._config
+    }, t.prototype.reset = function (t) {
+        this.clearSavedConfig();
+        var e = this;
+        a("#main-style-container").length && (e.defaultSelectedStyle = a("#main-style-container").attr("href")), e.deactivateCondensedSidebar(), e.deactivateDarkMode(), e.activateDefaultSidebarTheme(), e.activateFluid(), t()
+    }, t.prototype.init = function () {
+        var e = this;
+        a("#main-style-container").length && (e.defaultSelectedStyle = a("#main-style-container").attr("href")), this._applyConfig(), this._adjustLayout(), this.window.on("resize", function (t) {
+            t.preventDefault(), e._adjustLayout()
+        }), a.Topbar.init()
+    }, a.LayoutThemeApp = new t, a.LayoutThemeApp.Constructor = t
+}(window.jQuery), function (i) {
+    "use strict";
+
+    function t() {
+        this.$body = i("body"), this.$portletIdentifier = ".card", this.$portletCloser = '.card a[data-bs-toggle="remove"]', this.$portletRefresher = '.card a[data-bs-toggle="reload"]'
+    }
+
+    t.prototype.init = function () {
+        var o = this;
+        i(document).on("click", this.$portletCloser, function (t) {
+            t.preventDefault();
+            var e = i(this).closest(o.$portletIdentifier), a = e.parent();
+            e.remove(), 0 == a.children().length && a.remove()
+        }), i(document).on("click", this.$portletRefresher, function (t) {
+            t.preventDefault();
+            var e = i(this).closest(o.$portletIdentifier);
+            e.append('<div class="card-disabled"><div class="card-portlets-loader"></div></div>');
+            var a = e.find(".card-disabled");
+            setTimeout(function () {
+                a.fadeOut("fast", function () {
+                    a.remove()
+                })
+            }, 500 + 5 * Math.random() * 300)
+        })
+    }, i.Portlet = new t, i.Portlet.Constructor = t
+}(window.jQuery), function (n) {
+    "use strict";
+
+    function t() {
+        this.$body = n("body"), this.$window = n(window)
+    }
+
+    t.prototype.initMask = function () {
+        n('[data-toggle="input-mask"]').each(function (t, e) {
+            var a = n(e).data("maskFormat"), o = n(e).data("reverse");
+            null != o ? n(e).mask(a, {reverse: o}) : n(e).mask(a)
+        })
+    }, t.prototype.initTouchspin = function () {
+        var o = {};
+        n('[data-toggle="touchspin"]').each(function (t, e) {
+            var a = n.extend({}, o, n(e).data());
+            n(e).TouchSpin(a)
+        })
+    }, t.prototype.initMaxlength = function () {
+        var o = {
+            warningClass: "badge bg-success",
+            limitReachedClass: "badge bg-danger",
+            separator: " out of ",
+            preText: "You typed ",
+            postText: " chars available.",
+            placement: "bottom"
+        };
+        n('[data-toggle="maxlength"]').each(function (t, e) {
+            var a = n.extend({}, o, n(e).data());
+            n(e).maxlength(a)
+        })
+    }, t.prototype.init = function () {
+        this.initMask(), this.initTouchspin(), this.initMaxlength()
+    }, n.AdvanceFormApp = new t, n.AdvanceFormApp.Constructor = t
+}(window.jQuery), function (c) {
+    "use strict";
+
+    function t() {
+    }
+
+    t.prototype.send = function (t, e, a, o, i, n, r, s) {
+        var d = {heading: t, text: e, position: a, loaderBg: o, icon: i, hideAfter: n = n || 3e3, stack: r = r || 1};
+        d.showHideTransition = s || "fade", c.toast().reset("all"), c.toast(d)
+    }, c.NotificationApp = new t, c.NotificationApp.Constructor = t
+}(window.jQuery), function (a) {
+    "use strict";
+
+    function t() {
+    }
+
+    t.prototype.initTooltipPlugin = function () {
+        a.fn.tooltip && a('[data-toggle="tooltip"]').tooltip()
+    }, t.prototype.initPopoverPlugin = function () {
+        a.fn.popover && a('[data-bs-toggle="popover"]').each(function (t, e) {
+            a(this).popover()
+        })
+    }, t.prototype.initToastPlugin = function () {
+        a.fn.toast && a('[data-toggle="toast"]').toast()
+    }, t.prototype.initFormValidation = function () {
+        a(".needs-validation").on("submit", function (t) {
+            return a(this).addClass("was-validated"), !1 !== a(this)[0].checkValidity() || (t.preventDefault(), t.stopPropagation(), !1)
+        })
+    }, t.prototype.initShowHidePassword = function () {
+        a("[data-password]").on("click", function () {
+            "false" == a(this).attr("data-password") ? (a(this).siblings("input").attr("type", "text"), a(this).attr("data-password", "true"), a(this).addClass("show-password")) : (a(this).siblings("input").attr("type", "password"), a(this).attr("data-password", "false"), a(this).removeClass("show-password"))
+        })
+    }, t.prototype.initMultiDropdown = function () {
+        a(".dropdown-menu a.dropdown-toggle").on("click", function () {
+            return a(this).next().hasClass("show") || a(this).parents(".dropdown-menu").first().find(".show").removeClass("show"), a(this).next(".dropdown-menu").toggleClass("show"), !1
+        })
+    }, t.prototype.initSyntaxHighlight = function () {
+        a(document).ready(function (t) {
+            document.querySelectorAll("pre span.escape").forEach(function (t, e) {
+                for (var a = 1 / 0, o = (t.classList.contains("escape"), t.innerText).replace(/^\n/, "").trimRight().split("\n"), i = 0; i < o.length; i++) o[i].trim() && (a = Math.min(o[i].search(/\S/), a));
+                for (var n = [], i = 0; i < o.length; i++) n.push(o[i].replace(new RegExp("^ {" + a + "}", "g"), ""));
+                t.innerText = n.join("\n")
+            }), document.querySelectorAll("pre span.escape").forEach(function (t) {
+                hljs.highlightBlock(t)
+            })
+        })
+    }, t.prototype.init = function () {
+        this.initTooltipPlugin(), this.initPopoverPlugin(), this.initToastPlugin(), this.initFormValidation(), this.initShowHidePassword(), this.initMultiDropdown(), this.initSyntaxHighlight()
+    }, a.Components = new t, a.Components.Constructor = t
+}(window.jQuery), function (a) {
+    "use strict";
+
+    function t() {
+        this.$body = a("body"), this.$window = a(window)
+    }
+
+    t.prototype.activateDefaultSidebarTheme = function () {
+        a.LayoutThemeApp.activateDefaultSidebarTheme()
+    }, t.prototype.activateLightSidebarTheme = function () {
+        a.LayoutThemeApp.activateLightSidebarTheme()
+    }, t.prototype.activateDarkSidebarTheme = function () {
+        a.LayoutThemeApp.activateDarkSidebarTheme()
+    }, t.prototype.activateCondensedSidebar = function () {
+        a.LayoutThemeApp.activateCondensedSidebar()
+    }, t.prototype.deactivateCondensedSidebar = function () {
+        a.LayoutThemeApp.deactivateCondensedSidebar()
+    }, t.prototype.activateScrollableSidebar = function () {
+        a.LayoutThemeApp.activateScrollableSidebar()
+    }, t.prototype.deactivateScrollableSidebar = function () {
+        a.LayoutThemeApp.deactivateScrollableSidebar()
+    }, t.prototype.activateBoxed = function () {
+        a.LayoutThemeApp.activateBoxed()
+    }, t.prototype.activateFluid = function () {
+        a.LayoutThemeApp.activateFluid()
+    }, t.prototype.activateDarkMode = function () {
+        a.LayoutThemeApp.activateDarkMode()
+    }, t.prototype.deactivateDarkMode = function () {
+        a.LayoutThemeApp.deactivateDarkMode()
+    }, t.prototype.clearSavedConfig = function () {
+        a.LayoutThemeApp.clearSavedConfig()
+    }, t.prototype.getLayoutConfig = function () {
+        return a.LayoutThemeApp.getConfig()
+    }, t.prototype.resetLayout = function (t) {
+        a.LayoutThemeApp.reset(t)
+    }, t.prototype.init = function () {
+        a.LayoutThemeApp.init(), setTimeout(function () {
+            document.body.classList.remove("loading")
+        }, 400), a.RightBar.init();
+        var t = this.$body.data("layoutConfig");
+        window.sessionStorage && t && t.hasOwnProperty("showRightSidebarOnStart") && t.showRightSidebarOnStart && (sessionStorage.getItem("_HYPER_VISITED_") || (a.RightBar.toggleRightSideBar(), sessionStorage.setItem("_HYPER_VISITED_", !0))), a.Portlet.init(), a.AdvanceFormApp.init(), a.Components.init(), a(window).on("load", function () {
+            a("#status").fadeOut(), a("#preloader").delay(350).fadeOut("slow")
+        });
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(function (t) {
+            return new bootstrap.Popover(t)
+        });
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (e) {
+            e.addEventListener("mouseover", function (t) {
+                new bootstrap.Tooltip(e).show()
+            })
+        });
+        [].slice.call(document.querySelectorAll(".offcanvas")).map(function (t) {
+            return new bootstrap.Offcanvas(t)
+        });
+        var e = document.getElementById("toastPlacement");
+        e && document.getElementById("selectToastPlacement").addEventListener("change", function () {
+            e.dataset.originalClass || (e.dataset.originalClass = e.className), e.className = e.dataset.originalClass + " " + this.value
+        });
+        [].slice.call(document.querySelectorAll(".toast")).map(function (t) {
+            return new bootstrap.Toast(t)
+        });
+        // document.getElementById("light-style").href.includes("rtl.min.css") && (document.getElementsByTagName("html")[0].dir = "rtl"), document.getElementById("dark-style").href.includes("rtl.min.css") && (document.getElementsByTagName("html")[0].dir = "rtl")
+    }, a.App = new t, a.App.Constructor = t
+}(window.jQuery), function () {
+    "use strict";
+    window.jQuery.App.init()
+}();
+

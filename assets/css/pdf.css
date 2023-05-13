@@ -1,0 +1,32 @@
+
+li{
+    margin-bottom: 10px;
+}
+ul,ol{
+    margin-bottom: 40px;
+}
+
+ol {
+    margin-top: 10px;
+    padding-left: 15px;
+    counter-reset: item;
+}
+ol ol{
+    padding-left: 30px;
+    padding-top: 10px;
+}
+ol li{
+    margin-bottom: 10px;
+}
+ol > li {
+    margin-bottom: 10px;
+    counter-increment: item;
+}
+ol ol > li {
+
+    display: block;
+}
+ol ol > li:before {
+    content: counters(item, ".") ". ";
+
+}

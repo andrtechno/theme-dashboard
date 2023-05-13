@@ -1,51 +1,63 @@
 <?php
 
+
 namespace app\web\themes\dashboard;
 
-use panix\engine\web\AssetBundle;
 
-/**
- * Class AdminAsset
- * @package app\web\themes\dashboard
- */
+use yii\web\AssetBundle;
+use yii\web\View;
+use Yii;
+
 class AdminAsset extends AssetBundle
 {
-
-    public $css = [
-        '//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic',
-        'css/style.css',
-        //'css/breadcrumbs.css',
-        //'css/dark.css',
-    ];
-
-    public $js = [
-        'js/app.js',
-        'js/app.init.js',
-        //'js/app.init.dark.js',
-        'js/app-style-switcher.js',
-        'js/waves.js',
-        'js/sidebarmenu.js',
-        'js/custom.js',
-        //'js/pages/dashboards/dashboard1.js',
-    ];
-
-
-
-
-
-    public $depends = [
-        'panix\ext\fancybox\FancyboxAsset',
-        'panix\engine\assets\CommonAsset',
-        //'panix\engine\assets\ClipboardAsset',
-        //'app\web\themes\dashboard\AdminCountersAsset',
-    ];
-
-    public $cssOptions = ['data-theme' => 1];
+   // public $basePath = '@app/themes/basic/assets';
+    //public $baseUrl = '@web/themes/basic/assets';
 
     public function init()
     {
-
-        $this->sourcePath = __DIR__ . '/assets';
+       // $this->_theme = \Yii::$app->settings->get('app', 'theme');
+        $this->sourcePath = __DIR__."/assets";
         parent::init();
+
+        if(Yii::$app->session->get('dashboard_theme') == 'dark'){
+            $this->css[] = 'css/dark.css';
+        }
+
     }
+    public $jsOptions = [
+        'position' => View::POS_END
+    ];
+
+    public $css = [
+        'css/fontawesome.min.css',
+        'css/duotone.min.css',
+
+        'css/style.css',
+        //'css/light.min.css',
+
+    ];
+    public $js = [
+        'js/vendor.js',
+       // 'fontawesome/js/duotone.min.js',
+        'js/app.js',
+        'js/interactive.v0.0.2.js',
+        'js/ss.js',
+        'bootbox/bootbox.min.js',
+        //'js/theme-switch.js',
+        //'js/dropzone.min.js',
+       // 'js/fileupload.js',
+        'js/jquery.playSound.js',
+        //'js/queue.js'
+    ];
+    public $depends = [
+        'yii\jui\JuiAsset',
+        'yii\web\YiiAsset',
+        'yii\web\JqueryAsset',
+        'app\web\themes\dashboard\BootstrapIconsAsset',
+        'yii\bootstrap5\BootstrapPluginAsset',
+        //'panix\engine\assets\CommonAsset',
+        'panix\engine\assets\IconAsset'
+        //'panix\engine\assets\BootstrapNotifyAsset'
+
+    ];
 }

@@ -1,0 +1,44 @@
+.gantt .bar-progress {
+  fill: #727cf5
+}
+
+.gantt .bar-wrapper:hover .bar-progress {
+  fill: #8a92f7
+}
+
+.gantt .bar, .gantt .bar-wrapper:hover .bar {
+  fill: #eef2f7
+}
+
+.gantt .bar-label, .gantt .bar-label.big {
+  fill: #6c757d
+}
+
+.gantt .grid-header {
+  fill: #f1f3fa;
+  stroke: #f1f3fa
+}
+
+.gantt .grid-row {
+  fill: transparent
+}
+
+.gantt .grid-row:nth-child(even) {
+  fill: #f1f3fa
+}
+
+.gantt .lower-text, .gantt .upper-text {
+  fill: #6c757d
+}
+
+.gantt .row-line {
+  stroke: #eef2f7
+}
+
+.gantt .today-highlight {
+  fill: #eef2f7
+}
+
+.gantt-container .popup-wrapper .pointer {
+  display: none
+}

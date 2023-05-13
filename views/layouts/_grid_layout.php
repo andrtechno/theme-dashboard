@@ -15,8 +15,10 @@ use panix\engine\Html;
                     <?php if (isset($buttons)) { ?>
 
                         <?php
+
                         foreach ($buttons as $btn) {
                             $icon = '';
+
                             if (!isset($btn['options']['class']))
                                 $btn['options']['class'] = 'btn btn-sm btn-success';
                             if (!isset($btn['options']['data-pjax']))
@@ -35,11 +37,20 @@ use panix\engine\Html;
         </div>
 
 
-
     </div>
     <div class="card-body">
-        <div class="table-responsive">{items}</div>
+        <?php
+        if (isset($beforeContent)) {
+            echo $beforeContent;
+        }
+        ?>
 
+        <div class="table-responsive">{items}</div>
+        <?php
+        if (isset($afterContent)) {
+            echo $afterContent;
+        }
+        ?>
     </div>
     <div class="card-footer">
         <div class="row">

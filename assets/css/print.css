@@ -1,0 +1,113 @@
+.item {
+    float: left;
+    width: 70mm;
+
+}
+
+.item .container {
+    border-right: 1px dotted #c1c1c1;
+    border-bottom: 1px dotted #c1c1c1;
+    padding: 4px;
+    text-align: center;
+    /*height: 37.1mm;*//* 3x7 */
+
+    width: 100%;
+}
+
+.item .container.size-3x4 {
+    height: 72.2mm;
+    max-height: 72.2mm;
+}
+
+.item .container.size-3x4 img {
+    height: 65mm;
+}
+
+.item .container.size-3x6 {
+    height: 47.4mm;
+    max-height: 47.4mm;
+}
+
+.item .container.size-3x6 img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.item .container table {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    /*border-collapse: collapse;*/
+}
+
+.item table {
+    max-height: 40mm
+}
+
+.item .container table tr {
+    margin: 0;
+    padding: 0;
+}
+
+.item .container table td {
+    margin: 0;
+    padding: 2px;
+    border: 1px solid #333;
+}
+
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price-old {
+    position: relative;
+}
+
+.price-old2:before {
+    height: 2px;
+    background: #333;
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.price-old {
+    font-size: 15px;
+    position: relative;
+}
+
+.sep {
+    height: 5px;
+    background: #333;
+
+    display: block;
+    width: 100%;
+
+}
+.print-qr{
+    margin-top: 5px;
+}
+.print-sku{
+    font-family: Nunito;
+    margin-top: 5px;
+    color: #000;
+}
+.print-name{
+
+    font-weight: bold;
+    font-family: Nunito;
+    word-break: break-word;
+    line-height: 1;
+    color: #000;
+    margin: 0 5px;
+    overflow: hidden;height:30px;font-size: 16px
+}
+.sticker-40x60{
+
+}

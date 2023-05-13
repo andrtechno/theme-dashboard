@@ -8,5 +8,9 @@
     "minimum-stability": "stable",
     "extra": {
         "installer-name": "dashboard"
+    },
+    "require": {
+        "yiisoft/yii2-bootstrap5": "~1.0@dev",
+        "npm-asset/bootstrap-icons": "^1.5"
     }
 }
