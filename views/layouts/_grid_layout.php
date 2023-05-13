@@ -6,8 +6,8 @@ use panix\engine\Html;
 <div class="card grid">
     <div class="grid-loading"></div>
     <div class="card-header">
-        <div class="container-fluid pt-2 pb-2">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row no-gutters">
                 <div class="col-sm-6 d-none d-sm-block">
                     <h5><?php if (isset($title)) echo $title; ?></h5>
                 </div>
@@ -38,7 +38,7 @@ use panix\engine\Html;
 
 
     </div>
-    <div class="card-body">
+    <div class="card-body p-0">
         <?php
         if (isset($beforeContent)) {
             echo $beforeContent;

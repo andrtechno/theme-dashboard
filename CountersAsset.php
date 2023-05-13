@@ -5,10 +5,10 @@ namespace app\web\themes\dashboard;
 use panix\engine\web\AssetBundle;
 
 /**
- * Class AdminCountersAsset
+ * Class CountersAsset
  * @package app\web\themes\dashboard
  */
-class AdminCountersAsset extends AssetBundle
+class CountersAsset extends AssetBundle
 {
 
 

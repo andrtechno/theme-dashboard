@@ -1,7 +1,7 @@
 <?php
 
 use app\web\themes\dashboard\sidebar\Sidebar;
-use yii\helpers\Html;
+use panix\engine\Html;
 
 ?>
 <?=
@@ -30,11 +30,8 @@ foreach ($items->items as $item) { ?>
     </a>
 
     <div class="h-100" id="leftside-menu-container" data-simplebar>
-
         <ul class="side-nav">
             <?php foreach ($items->items as $key => $app) { ?>
-
-
                 <li class="side-nav-title side-nav-item text-white  d-none2"><?= $app['label'] ?></li>
                 <?php
                 Sidebar::sortList($app['items']);
@@ -102,13 +99,12 @@ foreach ($items->items as $item) { ?>
 
 
         <div class="help-box text-white text-center">
-            <a href="javascript: void(0);" class="float-end close-btn text-white">
+            <a href="javascript: void(0);" class="float-end close-btn text-white d-none">
                 <i class="icon-delete"></i>
             </a>
             <i class="fad fa-user-headset fa-3x text-danger"></i>
             <h5 class="mt-3">Поддержка</h5>
-            <p class="mb-3">Телефон: <a href="#">06060660</a></p>
-            <p class="mb-3">E-mail: <a href="#">info@getbonus.pro</a></p>
+            <p class="mb-3">Телефон:<span class="d-block"><?= Html::tel('+380634892695'); ?></span></p>
             <a href="javascript: void(0);" class="btn btn-outline-success btn-sm">Написать нам</a>
         </div>
 

@@ -52,15 +52,11 @@ AdminAsset::register($this);
 
             <?= $this->render('partials/_navbar'); ?>
 
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
-
                         <div class="page-title-box">
                             <div class="page-title-right">
-
 
                                 <?php
                                 if (!isset($this->context->buttons)) {
