@@ -20,20 +20,21 @@ class Sidebar
         //CMS::dump($found);
         //die;
         //$found = array_merge($this->items, $this->findMenu());
-        $defaultItems = [
-            'system' => [
-                'sort' => -2,
-                'label' => Yii::t('admin/default', 'SYSTEM'),
-                'icon' => 'tools',
-                'visible' => count($found['system']['items'])
-            ],
-            'modules' => [
+        $defaultItems['system'] = [
+            'sort' => -2,
+            'label' => Yii::t('admin/default', 'SYSTEM'),
+            'icon' => 'tools',
+            'visible' => count($found['system']['items'])
+        ];
+
+        if (isset($found['modules'])) {
+            $defaultItems['modules'] = [
                 'sort' => -1,
                 'label' => Yii::t('admin/default', 'MODULES'),
                 'icon' => 'puzzle',
                 'visible' => count($found['modules']['items'])
-            ],
-        ];
+            ];
+        }
         $this->items = ArrayHelper::merge($defaultItems, $found);
         //$this->items = array_merge($defaultItems, $found);
 
@@ -60,7 +61,7 @@ class Sidebar
 
         $new = [];
         foreach ($result as $id => $res) {
-            $new[$id]=$res;
+            $new[$id] = $res;
             if (isset($res['visible'])) {
                 if (!$res['visible']) {
                     //unset($this->items[$mid]);
