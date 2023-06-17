@@ -9,7 +9,7 @@
         "installer-name": "dashboard"
     },
     "require": {
-        "yiisoft/yii2-bootstrap5": "~1.0@dev",
+        "yiisoft/yii2-bootstrap5": "*",
         "npm-asset/bootstrap-icons": "^1.5"
     }
 }
