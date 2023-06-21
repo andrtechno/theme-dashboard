@@ -1161,7 +1161,6 @@ a:hover,
 
 .navbar-right {
   top: 0;
-  height: 50px;
   align-items: center;
 }
 
@@ -2631,6 +2630,7 @@ a.desc:after {
   margin-right: 0;
   position: absolute;
   right: 15px;
+  height: 50px;
 }
 @media (min-width: 768px) {
   .navbar .navbar-right .navbar .navbar-right {
