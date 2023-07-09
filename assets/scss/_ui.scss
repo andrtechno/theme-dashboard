@@ -207,7 +207,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
 }
 
 .ui-slider-horizontal .ui-slider-handle {
-  top: - calc($ui-slider-handle-size / 2 + $ui-slider-handle-border-size);
+  top: - calc($ui-slider-handle-size / 2 - ($ui-slider-height/2) + $ui-slider-handle-border-size);
   margin-left: -.6em;
 }
 
