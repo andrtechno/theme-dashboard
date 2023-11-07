@@ -76,3 +76,10 @@ $(function () {
     });
 });
 
+$(document).on("pjax:complete", function (xhr, textStatus, options) {
+    var body = $("html, body");
+	//$(xhr.target).offset().top
+    body.stop().animate({scrollTop: 0}, 500, "swing", function () {
+
+    });
+});
