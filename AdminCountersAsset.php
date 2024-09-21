@@ -12,11 +12,7 @@ class AdminCountersAsset extends AssetBundle
 {
 
 
-    public function init()
-    {
-        $this->sourcePath = \Yii::$app->view->theme->basePath . '/assets';
-        parent::init();
-    }
+    public $sourcePath = __DIR__ . '/assets';
 
     public $js = [
         'js/jquery.playSound.js',
