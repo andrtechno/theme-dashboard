@@ -11,11 +11,7 @@ use yii\web\AssetBundle;
 class AdminLoginAsset extends AssetBundle {
 
 
-    public function init()
-    {
-        $this->sourcePath = \Yii::$app->view->theme->basePath . '/assets';
-        parent::init();
-    }
+    public $sourcePath = __DIR__ . '/assets';
     public $jsOptions = array(
         'position' => \yii\web\View::POS_END
     );
