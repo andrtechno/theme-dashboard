@@ -8,16 +8,9 @@ use yii\web\AssetBundle;
  * Class AdminLoginAsset
  * @package app\web\themes\dashboard
  */
-class AdminLoginAsset extends AssetBundle {
+class AdminLoginAsset extends AdminAsset {
 
-    public function init()
-    {
-        $this->sourcePath = __DIR__ . '/assets';
-        parent::init();
-    }
-    public $jsOptions = array(
-        'position' => \yii\web\View::POS_END
-    );
+    public $js = [];
     public $css = [
         'css/dashboard.css',
         'css/login.css',
