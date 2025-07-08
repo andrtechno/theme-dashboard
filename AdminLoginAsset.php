@@ -10,8 +10,11 @@ use yii\web\AssetBundle;
  */
 class AdminLoginAsset extends AssetBundle {
 
-
-    public $sourcePath = __DIR__ . '/assets';
+    public function init()
+    {
+        $this->sourcePath = __DIR__ . '/assets';
+        parent::init();
+    }
     public $jsOptions = array(
         'position' => \yii\web\View::POS_END
     );
